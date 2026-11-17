@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duyet Nguyen Tuan — Unity & Unreal Team Lead</title>
+<meta name="description" content="Portfolio of Duyet Nguyen Tuan — Team Lead with 13+ years building games and real-time applications in Unity (C#) and Unreal Engine (C++).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0d12; --bg2:#12151d; --card:#161a24; --line:#252b38;
+  --text:#e6e9ef; --muted:#9aa3b5; --accent:#4cc2ff; --accent2:#8b7bff;
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+/* header */
+header{position:sticky;top:0;z-index:10;background:rgba(11,13,18,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.logo{font-family:"JetBrains Mono",monospace;font-weight:500;color:var(--text);letter-spacing:.5px}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:4px;background:var(--bg2);border:1px solid var(--line);border-radius:999px;padding:4px}
+nav button{all:unset;cursor:pointer;padding:7px 16px;border-radius:999px;font-size:14px;font-weight:500;color:var(--muted);transition:.2s}
+nav button:hover{color:var(--text)}
+nav button[aria-selected=true]{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0b0d12}
+
+section.tab{display:none;padding:56px 0 80px;animation:fade .35s ease}
+section.tab.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+h1{font-size:clamp(34px,6vw,56px);line-height:1.1;margin:0 0 12px;letter-spacing:-1px}
+h2{font-size:24px;margin:56px 0 20px;letter-spacing:-.3px}
+h2:first-child{margin-top:0}
+h3{margin:0;font-size:18px}
+.grad{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.muted{color:var(--muted)}
+.kicker{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--accent);letter-spacing:1px;text-transform:uppercase}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:560px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--text);font-weight:500;font-size:14px}
+.btn:hover{border-color:var(--accent);text-decoration:none}
+.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0b0d12;border:0}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.stat b{display:block;font-size:30px;line-height:1.1}
+.stat span{font-size:13px;color:var(--muted)}
+
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.card h3{font-size:15px;margin-bottom:10px;color:var(--accent)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:12.5px;padding:4px 10px;border-radius:999px;background:var(--bg2);border:1px solid var(--line);color:var(--text)}
+
+/* timeline */
+.timeline{position:relative;margin-left:8px;padding-left:28px;border-left:2px solid var(--line)}
+.job{position:relative;margin-bottom:28px}
+.job::before{content:"";position:absolute;left:-36px;top:26px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
+.job .card{padding:24px}
+.job-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px;margin-bottom:12px}
+.job-head .co{font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:600}
+.job-head .date{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--accent);white-space:nowrap}
+.job ul{margin:0;padding-left:18px;color:#cfd4de}
+.job li{margin:4px 0}
+.job li::marker{color:var(--accent2)}
+
+/* demo */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.filters button{all:unset;cursor:pointer;font-size:13px;padding:6px 14px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.filters button.on{border-color:var(--accent);color:var(--text);background:rgba(76,194,255,.08)}
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(440px,1fr));gap:18px}
+.proj{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
+.proj.hide{display:none}
+.media{position:relative;aspect-ratio:16/9;background:#05070a;cursor:pointer;overflow:hidden}
+.media img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:.3s}
+.media:hover img{opacity:1;transform:scale(1.03)}
+.media iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.play{position:absolute;inset:0;display:grid;place-items:center}
+.play::before{content:"";width:64px;height:64px;border-radius:50%;background:rgba(11,13,18,.7);border:2px solid var(--accent);backdrop-filter:blur(4px)}
+.play::after{content:"";position:absolute;border-left:18px solid var(--accent);border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px}
+.placeholder{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px;background:radial-gradient(circle at 30% 20%,rgba(139,123,255,.25),transparent 60%),radial-gradient(circle at 80% 90%,rgba(76,194,255,.2),transparent 55%);cursor:default}
+.placeholder b{font-size:22px;display:block}
+.proj .body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.proj p{margin:0;color:#cfd4de;font-size:15px}
+.proj .role{font-size:13px;color:var(--muted)}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
+
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr}
+  .projects{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .bar{height:auto;padding:12px 0;flex-direction:column;gap:10px}
+  nav button{padding:7px 12px}
+  .timeline{padding-left:20px}
+  .job::before{left:-28px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#about">duyet<span>.dev</span></a>
+    <nav role="tablist">
+      <button role="tab" data-tab="about">About</button>
+      <button role="tab" data-tab="experience">Experience</button>
+      <button role="tab" data-tab="demo">Demo</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ================= ABOUT ================= -->
+<section class="tab" id="about">
+  <div class="hero">
+    <div>
+      <div class="kicker">Team Lead · Unity &amp; Unreal Engine</div>
+      <h1>Duyet <span class="grad">Nguyen Tuan</span></h1>
+      <p class="lead">Team Lead with 13+ years building games and real-time applications in Unity (C#) and Unreal Engine (C++). Specialized in multiplayer systems on AWS dedicated servers, cross-platform delivery (iOS, Android, HTML5, desktop) and performance optimization.</p>
+      <p class="muted">Hands-on lead who still writes core systems, sets technical direction and mentors developers.</p>
+      <div class="cta">
+        <a class="btn primary" href="mailto:devirosnguyen@gmail.com">✉ Contact me</a>
+        <a class="btn" href="https://linkedin.com/in/duyet-nguyen-tuan-652855267" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn" href="#demo">View demos →</a>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b class="grad">13+</b><span>years in games &amp; real-time 3D</span></div>
+      <div class="stat"><b class="grad">6</b><span>platforms shipped: iOS, Android, Web, Win, macOS, Quest</span></div>
+      <div class="stat"><b class="grad">UE + Unity</b><span>C++ &amp; C# engines</span></div>
+      <div class="stat"><b class="grad">AWS</b><span>GameLift / EC2 dedicated servers</span></div>
+    </div>
+  </div>
+
+  <h2>Technical Skills</h2>
+  <div class="grid">
+    <div class="card"><h3>Engines</h3><div class="tags">
+      <span class="tag">Unreal Engine 4/5</span><span class="tag">C++</span><span class="tag">Blueprints</span><span class="tag">Replication</span><span class="tag">GAS</span><span class="tag">Unity</span><span class="tag">C#</span><span class="tag">URP</span><span class="tag">Addressables</span></div></div>
+    <div class="card"><h3>Multiplayer &amp; Backend</h3><div class="tags">
+      <span class="tag">Dedicated Server</span><span class="tag">AWS GameLift</span><span class="tag">AWS EC2</span><span class="tag">Client–server networking</span><span class="tag">Session / room management</span></div></div>
+    <div class="card"><h3>Platforms</h3><div class="tags">
+      <span class="tag">iOS</span><span class="tag">Android</span><span class="tag">HTML5 / WebGL</span><span class="tag">Windows</span><span class="tag">macOS</span><span class="tag">Meta Quest</span></div></div>
+    <div class="card"><h3>Performance</h3><div class="tags">
+      <span class="tag">CPU / GPU / memory profiling</span><span class="tag">Rendering optimization</span><span class="tag">Load-time reduction</span><span class="tag">Unity Profiler</span><span class="tag">Unreal Insights</span><span class="tag">stat commands</span><span class="tag">RenderDoc</span><span class="tag">OVR Metrics Tool</span><span class="tag">Meta Quest Developer Hub</span></div></div>
+    <div class="card"><h3>XR &amp; Interaction</h3><div class="tags">
+      <span class="tag">AR</span><span class="tag">VR</span><span class="tag">Kinect</span><span class="tag">Leap Motion</span></div></div>
+    <div class="card"><h3>Pipeline &amp; Tools</h3><div class="tags">
+      <span class="tag">Editor tooling</span><span class="tag">CryEngine → Unreal asset conversion</span><span class="tag">Build pipelines</span></div></div>
+    <div class="card"><h3>Leadership</h3><div class="tags">
+      <span class="tag">Team management</span><span class="tag">Planning &amp; estimation</span><span class="tag">Risk reporting</span><span class="tag">Mentoring</span><span class="tag">Cross-team coordination</span></div></div>
+  </div>
+
+  <h2>Education &amp; Language</h2>
+  <div class="grid">
+    <div class="card"><h3>Education</h3><b>B.Eng. Computer Hardware Technology</b><div class="muted">University of Information Technology · 2008 – 2013</div></div>
+    <div class="card"><h3>Language</h3><b>English</b><div class="muted">Professional reading &amp; writing (technical documentation, client communication); conversational speaking.</div></div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section class="tab" id="experience">
+  <div class="kicker">Career</div>
+  <h1>Professional <span class="grad">Experience</span></h1>
+  <p class="muted" style="margin-bottom:40px">Ho Chi Minh City &amp; Da Nang, Vietnam · 2012 – present</p>
+
+  <div class="timeline">
+    <div class="job"><div class="card">
+      <div class="job-head"><div><div class="co">Meta Technology Lab Inc.</div><h3>Team Lead, Unreal/Unity</h3></div><div class="date">Apr 2026 – Oct 2026 · Da Nang</div></div>
+      <ul>
+        <li>Lead technical delivery of 3 game projects with a team of 5 engineers, owning code quality, performance and scalability.</li>
+        <li>Define technical architecture, development workflows and engineering standards across projects.</li>
+        <li>Translate business requirements into technical solutions with product teams and stakeholders.</li>
+        <li>Lead root cause analysis on complex production issues and drive long-term fixes that prevent recurring incidents.</li>
+        <li>Review code and mentor engineers; introduced automation and AI-assisted development that sped up delivery and cut repetitive manual work.</li>
+      </ul>
+    </div></div>
+
+    <div class="job"><div class="card">
+      <div class="job-head"><div><div class="co">BAP IT JSC</div><h3>Unreal/Unity Developer</h3></div><div class="date">Mar 2023 – Apr 2026 · Ho Chi Minh City</div></div>
+      <ul>
+        <li>Developed Unreal features in a team of 4 developers and built the Unity mobile projects; reviewed code and mentored juniors.</li>
+        <li>Architected scalable multiplayer systems on AWS dedicated servers for real-time multi-user sessions (Meta Casino City).</li>
+        <li>Delivered one Unreal codebase to HTML5, Android, iOS, macOS and Meta Quest VR; owned the build and release pipeline.</li>
+        <li>Developed Unity mobile games Bounty Hunters, Golf AR and Monopoly: gameplay systems, UI and game logic architecture, backend and third-party SDK integration.</li>
+        <li>Reduced load times and stabilized frame rate on low-end devices through CPU, GPU and memory optimization; resolved production issues across a wide range of devices.</li>
+        <li>Estimated tasks and reported risks in sprint planning; coordinated with Backend, QA, Art and Infra.</li>
+      </ul>
+    </div></div>
+
+    <div class="job"><div class="card">
+      <div class="job-head"><div><div class="co">Rolling Ant</div><h3>Unreal Developer</h3></div><div class="date">Jan 2020 – Feb 2023 · Ho Chi Minh City</div></div>
+      <ul>
+        <li>Built large-scale real-time simulation and visualization apps (Coffee City, SPGL, Ecolakes).</li>
+        <li>Wrote a CryEngine → Unreal asset conversion tool that replaced manual asset migration for the art team.</li>
+        <li>Optimized rendering to keep large real-time scenes running smoothly on target hardware.</li>
+        <li>Built internal editor tools for the art pipeline; trained several junior developers.</li>
+      </ul>
+    </div></div>
+
+    <div class="job"><div class="card">
+      <div class="job-head"><div><div class="co">Fitin Technology JSC</div><h3>Team Lead, Unity</h3></div><div class="date">Jan 2018 – Jan 2020 · Ho Chi Minh City</div></div>
+      <ul>
+        <li>Led a 5-person Unity team building Fitin Pro, an interactive interior design application.</li>
+        <li>Defined architecture and development workflow; owned quality, performance and delivery dates.</li>
+        <li>Reported progress to stakeholders and introduced code review and workflow improvements that raised delivery quality.</li>
+      </ul>
+    </div></div>
+
+    <div class="job"><div class="card">
+      <div class="job-head"><div><div class="co">Rolling Ant</div><h3>Unity Developer</h3></div><div class="date">Dec 2012 – Jan 2018 · Ho Chi Minh City</div></div>
+      <ul>
+        <li>Built AR/VR and simulation applications for PC, mobile and standalone kiosks.</li>
+        <li>Prototyped interaction with Kinect and Leap Motion for gesture-based interactive applications.</li>
+        <li>Built production pipeline tools used across multiple projects.</li>
+      </ul>
+    </div></div>
+  </div>
+</section>
+
+<!-- ================= DEMO ================= -->
+<section class="tab" id="demo">
+  <div class="kicker">Key Projects</div>
+  <h1>Project <span class="grad">Demos</span></h1>
+  <p class="muted">Click a thumbnail to play the video.</p>
+
+  <div class="filters">
+    <button class="on" data-f="all">All</button>
+    <button data-f="unreal">Unreal</button>
+    <button data-f="unity">Unity</button>
+    <button data-f="multiplayer">Multiplayer</button>
+  </div>
+
+  <div class="projects">
+    <article class="proj" data-k="unreal multiplayer">
+      <div class="media" data-yt="GX6yn8BGPfA"></div>
+      <div class="body">
+        <h3>Meta Casino City — Multiplayer Platform</h3>
+        <div class="tags"><span class="tag">Unreal</span><span class="tag">C++</span><span class="tag">AWS</span></div>
+        <div class="role">Role: Unreal Developer</div>
+        <p>Designed the dedicated-server networking architecture for scalable real-time multiplayer rooms. Shipped to HTML5, mobile, desktop and VR (Meta Quest) from one codebase.</p>
+        <div class="links"><a class="btn" href="https://www.youtube.com/watch?v=GX6yn8BGPfA" target="_blank" rel="noopener">YouTube ↗</a></div>
+      </div>
+    </article>
+
+    <article class="proj" data-k="unreal">
+      <div class="media" data-yt="Zs9p37eINVU"></div>
+      <div class="body">
+        <h3>Simulation Projects — Coffee City, SPGL, Ecolakes</h3>
+        <div class="tags"><span class="tag">Unreal</span><span class="tag">C++</span></div>
+        <p>Large-scale real-time 3D visualization; custom art-pipeline tools and CryEngine asset migration.</p>
+        <div class="links"><a class="btn" href="https://www.youtube.com/watch?v=Zs9p37eINVU" target="_blank" rel="noopener">YouTube ↗</a><a class="btn" href="https://vimeo.com/688240647/f735db1a6c" target="_blank" rel="noopener">Vimeo ↗</a></div>
+      </div>
+    </article>
+
+    <article class="proj" data-k="unreal">
+      <div class="media" data-vimeo="688240647" data-h="f735db1a6c"></div>
+      <div class="body">
+        <h3>Simulation Showcase (Vimeo)</h3>
+        <div class="tags"><span class="tag">Unreal</span><span class="tag">Real-time 3D</span></div>
+        <p>Additional footage from the large-scale simulation and visualization work at Rolling Ant.</p>
+        <div class="links"><a class="btn" href="https://vimeo.com/688240647/f735db1a6c" target="_blank" rel="noopener">Vimeo ↗</a></div>
+      </div>
+    </article>
+
+    <article class="proj" data-k="unity">
+      <div class="media" data-yt="XUgnNiI_qtc"></div>
+      <div class="body">
+        <h3>Fitin Pro Interior Design</h3>
+        <div class="tags"><span class="tag">Unity</span><span class="tag">C#</span></div>
+        <div class="role">Role: Team Lead</div>
+        <p>Led architecture and delivery of an interactive 3D interior design application.</p>
+        <div class="links"><a class="btn" href="https://www.youtube.com/watch?v=XUgnNiI_qtc" target="_blank" rel="noopener">YouTube ↗</a></div>
+      </div>
+    </article>
+
+    <article class="proj" data-k="unity">
+      <div class="media"><div class="placeholder"><div><b>Bounty Hunters</b><span class="muted">Mobile game · iOS &amp; Android</span></div></div></div>
+      <div class="body">
+        <h3>Bounty Hunters — Mobile Game</h3>
+        <div class="tags"><span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Mobile</span></div>
+        <p>Built core gameplay systems; reduced load time and improved FPS on low-end Android devices.</p>
+        <div class="links">
+          <a class="btn" href="https://apps.apple.com/vn/app/bounty-hunters/id6739280497" target="_blank" rel="noopener">App Store ↗</a>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.joyboygames.bountyhunters&amp;hl=en" target="_blank" rel="noopener">Google Play ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj" data-k="unreal multiplayer">
+      <div class="media"><div class="placeholder"><div><b>EW Game Prototype</b><span class="muted">Hunter vs Prey · team-based multiplayer</span></div></div></div>
+      <div class="body">
+        <h3>EW Game Prototype — Hunter vs Prey</h3>
+        <div class="tags"><span class="tag">Unreal</span><span class="tag">AWS</span><span class="tag">Multiplayer</span></div>
+        <p>Built networking and the core gameplay loop on a dedicated server; delivered a playable prototype within a short development cycle.</p>
+      </div>
+    </article>
+
+    <article class="proj" data-k="unity">
+      <div class="media"><div class="placeholder"><div><b>Golf AR</b><span class="muted">Augmented-reality mobile game</span></div></div></div>
+      <div class="body">
+        <h3>Golf AR</h3>
+        <div class="tags"><span class="tag">Unity</span><span class="tag">C#</span><span class="tag">AR</span></div>
+        <p>Built AR gameplay features and kept performance stable across a wide range of mobile devices.</p>
+      </div>
+    </article>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="y"></span> Duyet Nguyen Tuan · Ho Chi Minh City, Vietnam</span>
+    <span><a href="mailto:devirosnguyen@gmail.com">devirosnguyen@gmail.com</a> · <a href="https://linkedin.com/in/duyet-nguyen-tuan-652855267" target="_blank" rel="noopener">LinkedIn</a></span>
+  </div>
+</footer>
+
+<script>
+const tabs = ["about","experience","demo"];
+function show(id){
+  if(!tabs.includes(id)) id = "about";
+  document.querySelectorAll("section.tab").forEach(s => s.classList.toggle("active", s.id === id));
+  document.querySelectorAll("nav button").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === id));
+  window.scrollTo({top:0});
+}
+document.querySelectorAll("nav button").forEach(b => b.onclick = () => { location.hash = b.dataset.tab; });
+window.addEventListener("hashchange", () => show(location.hash.slice(1)));
+show(location.hash.slice(1));
+document.getElementById("y").textContent = new Date().getFullYear();
+
+// Video thumbnails -> click to load iframe
+document.querySelectorAll(".media[data-yt]").forEach(m => {
+  const id = m.dataset.yt;
+  m.innerHTML = `<img loading="lazy" src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt=""><div class="play"></div>`;
+  m.onclick = () => { m.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`; m.onclick = null; };
+});
+document.querySelectorAll(".media[data-vimeo]").forEach(m => {
+  m.innerHTML = `<iframe loading="lazy" src="https://player.vimeo.com/video/${m.dataset.vimeo}?h=${m.dataset.h}" allow="fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+});
+
+// Filters
+document.querySelectorAll(".filters button").forEach(b => b.onclick = () => {
+  document.querySelectorAll(".filters button").forEach(x => x.classList.toggle("on", x === b));
+  const f = b.dataset.f;
+  document.querySelectorAll(".proj").forEach(p => p.classList.toggle("hide", f !== "all" && !p.dataset.k.split(" ").includes(f)));
+});
+</script>
+</body>
+</html>
