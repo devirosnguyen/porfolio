@@ -74,6 +74,16 @@ h3{margin:0;font-size:18px}
 .job li{margin:4px 0}
 .job li::marker{color:var(--accent2)}
 
+/* tools */
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
+.tool{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:12px}
+.tool-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.tool p{margin:0;color:#cfd4de;font-size:15px}
+.status{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--accent);white-space:nowrap;padding-top:3px}
+.tool .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
+.btn.disabled{opacity:.5;cursor:default}
+.btn.disabled:hover{border-color:var(--line)}
+
 /* demo */
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
 .filters button{all:unset;cursor:pointer;font-size:13px;padding:6px 14px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
@@ -103,6 +113,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   .projects{grid-template-columns:1fr}
 }
 @media (max-width:520px){
+  nav{flex-wrap:wrap;justify-content:center;border-radius:16px}
+  .tools{grid-template-columns:1fr}
   .bar{height:auto;padding:12px 0;flex-direction:column;gap:10px}
   nav button{padding:7px 12px}
   .timeline{padding-left:20px}
@@ -119,6 +131,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <button role="tab" data-tab="about">About</button>
       <button role="tab" data-tab="experience">Experience</button>
       <button role="tab" data-tab="demo">Demo</button>
+      <button role="tab" data-tab="tools">Utilities &amp; Tools</button>
     </nav>
   </div>
 </header>
@@ -353,6 +366,57 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     </article>
   </div>
 </section>
+
+<!-- ================= TOOLS ================= -->
+<section class="tab" id="tools">
+  <div class="kicker">Utilities &amp; Tools</div>
+  <h1>Tools <span class="grad">I Built</span></h1>
+  <p class="muted" style="margin-bottom:32px">Editor tools and pipelines for Unity and HTML5 developers: playtesting, VR performance and comfort, localization QA, playable ads and hot reload.</p>
+
+  <div class="tools">
+    <article class="tool">
+      <div class="tool-head"><h3>Playtest Replay &amp; Heatmaps</h3><span class="status">Unity tool</span></div>
+      <div class="tags"><span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Editor tool</span><span class="tag">Analytics</span></div>
+      <p>Record playtesters, replay their sessions in the Scene view, and turn many sessions into heatmaps showing where players went, looked and died, and where the game ran slowly. Records camera/head, VR hands, gaze and custom events at about 1–2 MB per hour. Saves local files, so no server is needed.</p>
+      <div class="links"><a class="btn primary" href="https://devirosnguyen.github.io/PlaytestReplay-Docs/" target="_blank" rel="noopener">Docs ↗</a></div>
+    </article>
+
+    <article class="tool">
+      <div class="tool-head"><h3>VR Budget Map</h3><span class="status">Unity tool</span></div>
+      <div class="tags"><span class="tag">Unity</span><span class="tag">URP</span><span class="tag">VR</span><span class="tag">Performance</span></div>
+      <p>Shows where a VR level goes over the draw-call and triangle budget of a standalone headset, before you build. Renders thousands of viewpoints across the level, paints a budget heatmap, and lists the worst spots with their likely causes. Includes budget presets for Quest 2, Quest 3/3S, Pico 4 and PC VR.</p>
+      <div class="links"><span class="btn disabled">Docs coming soon</span></div>
+    </article>
+
+    <article class="tool">
+      <div class="tool-head"><h3>VR Comfort Analyzer</h3><span class="status">Unity add-on</span></div>
+      <div class="tags"><span class="tag">Unity</span><span class="tag">C#</span><span class="tag">VR</span><span class="tag">Comfort</span></div>
+      <p>An add-on for Playtest Replay that measures motion likely to cause discomfort in recorded VR playtests: smooth turning, acceleration, vertical motion, low-frequency sway and frame drops. Shows the results as a heatmap, a timeline row and an HTML report with a suggested comfort rating. Default thresholds come from published research.</p>
+      <div class="links"><span class="btn disabled">Docs coming soon</span></div>
+    </article>
+
+    <article class="tool">
+      <div class="tool-head"><h3>Localization Preflight</h3><span class="status">Unity tool</span></div>
+      <div class="tags"><span class="tag">Unity</span><span class="tag">TextMeshPro</span><span class="tag">UI Toolkit</span><span class="tag">QA</span><span class="tag">CI</span></div>
+      <p>Opens every UI screen in every language at several resolutions and finds overflowing, truncated or clipped text, missing glyphs, broken keys and placeholder mismatches. Each problem comes with a cropped screenshot. Works offline and in CI.</p>
+      <div class="links"><span class="btn disabled">Docs coming soon</span></div>
+    </article>
+
+    <article class="tool">
+      <div class="tool-head"><h3>Playable Ads Platform</h3><span class="status">HTML5 / TypeScript</span></div>
+      <div class="tags"><span class="tag">TypeScript</span><span class="tag">WebGL</span><span class="tag">HTML5</span><span class="tag">Ad networks</span></div>
+      <p>Builds tiny 2D and 3D HTML5 playable ads that run fast on low-end Android phones, exported from one source to 9 ad networks (AppLovin, Unity, Google, Meta, TikTok, Mintegral and more). Includes a free browser-based validator, previewer and converter.</p>
+      <div class="links"><a class="btn primary" href="https://devirosnguyen.github.io/playable-validator/" target="_blank" rel="noopener">Validator &amp; docs ↗</a></div>
+    </article>
+
+    <article class="tool">
+      <div class="tool-head"><h3>CodePulse</h3><span class="status">In development</span></div>
+      <div class="tags"><span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Hot reload</span></div>
+      <p><i>Edit Code. Skip Compile. Keep Playing.</i> A C# hot-reload plugin for the Unity Editor that applies C# code changes while the game keeps running. Currently at the proof-of-concept stage.</p>
+      <div class="links"><span class="btn disabled">Docs coming soon</span></div>
+    </article>
+  </div>
+</section>
 </main>
 
 <footer>
@@ -363,7 +427,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 </footer>
 
 <script>
-const tabs = ["about","experience","demo"];
+const tabs = ["about","experience","demo","tools"];
 function show(id){
   if(!tabs.includes(id)) id = "about";
   document.querySelectorAll("section.tab").forEach(s => s.classList.toggle("active", s.id === id));
