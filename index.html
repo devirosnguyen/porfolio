@@ -247,13 +247,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
   <div class="projects">
     <article class="proj" data-k="unreal multiplayer">
-      <div class="media" data-yt="GX6yn8BGPfA"></div>
+      <div class="media" data-gdrive="1fk-J5iKItU2X2r-ns_aCQGhU2hm-sgb1"></div>
       <div class="body">
         <h3>Meta Casino City — Multiplayer Platform</h3>
         <div class="tags"><span class="tag">Unreal</span><span class="tag">C++</span><span class="tag">AWS</span></div>
         <div class="role">Role: Unreal Developer</div>
         <p>Designed the dedicated-server networking architecture for scalable real-time multiplayer rooms. Shipped to HTML5, mobile, desktop and VR (Meta Quest) from one codebase.</p>
-        <div class="links"><a class="btn" href="https://www.youtube.com/watch?v=GX6yn8BGPfA" target="_blank" rel="noopener">YouTube ↗</a></div>
+        <div class="links"><a class="btn" href="https://drive.google.com/file/d/1fk-J5iKItU2X2r-ns_aCQGhU2hm-sgb1/view" target="_blank" rel="noopener">Watch demo ↗</a></div>
       </div>
     </article>
 
@@ -347,6 +347,9 @@ document.querySelectorAll(".media[data-yt]").forEach(m => {
   const id = m.dataset.yt;
   m.innerHTML = `<img loading="lazy" src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt=""><div class="play"></div>`;
   m.onclick = () => { m.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`; m.onclick = null; };
+});
+document.querySelectorAll(".media[data-gdrive]").forEach(m => {
+  m.innerHTML = `<iframe loading="lazy" src="https://drive.google.com/file/d/${m.dataset.gdrive}/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
 });
 document.querySelectorAll(".media[data-vimeo]").forEach(m => {
   m.innerHTML = `<iframe loading="lazy" src="https://player.vimeo.com/video/${m.dataset.vimeo}?h=${m.dataset.h}" allow="fullscreen; picture-in-picture" allowfullscreen></iframe>`;
