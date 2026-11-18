@@ -98,6 +98,15 @@ h3{margin:0;font-size:18px}
 .media img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:.3s}
 .media:hover img{opacity:1;transform:scale(1.03)}
 .media iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+[hidden]{display:none!important}
+.fs{position:absolute;top:10px;left:10px;z-index:2;width:36px;height:36px;display:grid;place-items:center;border-radius:8px;border:1px solid rgba(255,255,255,.18);background:rgba(11,13,18,.72);color:#fff;cursor:pointer;backdrop-filter:blur(4px);opacity:.85;transition:.2s}
+.fs:hover,.fs:focus-visible{opacity:1;border-color:var(--accent);outline:none}
+.fs svg{width:18px;height:18px}
+.fs .exit{display:none}
+.media:fullscreen{aspect-ratio:auto;border-radius:0;margin:0;background:#000}
+.media:fullscreen .fs .enter{display:none}
+.media:fullscreen .fs .exit{display:block}
+.media:-webkit-full-screen{aspect-ratio:auto;border-radius:0;margin:0;background:#000}
 .play{position:absolute;inset:0;display:grid;place-items:center}
 .play::before{content:"";width:64px;height:64px;border-radius:50%;background:rgba(11,13,18,.7);border:2px solid var(--accent);backdrop-filter:blur(4px)}
 .play::after{content:"";position:absolute;border-left:18px solid var(--accent);border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px}
@@ -305,7 +314,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       </div>
     </article>
 
-    <article class="proj" data-k="unity vr">
+    <article class="proj" data-k="unity vr" hidden>
       <div class="media" data-gdrive="1hlIvK0ATjEz7J6HhXYfMPyfgTm2mesTz"></div>
       <div class="body">
         <h3>VR Grinder Machine</h3>
@@ -469,7 +478,7 @@ document.getElementById("y").textContent = new Date().getFullYear();
 document.querySelectorAll(".media[data-yt]").forEach(m => {
   const id = m.dataset.yt;
   m.innerHTML = `<img loading="lazy" src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt=""><div class="play"></div>`;
-  m.onclick = () => { m.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`; m.onclick = null; };
+  m.onclick = () => { m.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`; m.onclick = null; addFs(m); };
 });
 document.querySelectorAll(".media[data-gdrive]").forEach(m => {
   m.innerHTML = `<iframe loading="lazy" src="https://drive.google.com/file/d/${m.dataset.gdrive}/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
@@ -477,6 +486,31 @@ document.querySelectorAll(".media[data-gdrive]").forEach(m => {
 document.querySelectorAll(".media[data-vimeo]").forEach(m => {
   m.innerHTML = `<iframe loading="lazy" src="https://player.vimeo.com/video/${m.dataset.vimeo}?h=${m.dataset.h}" allow="fullscreen; picture-in-picture" allowfullscreen></iframe>`;
 });
+
+// Fullscreen toggle on every video
+function videoUrl(m){
+  if (m.dataset.gdrive) return `https://drive.google.com/file/d/${m.dataset.gdrive}/view`;
+  if (m.dataset.yt) return `https://www.youtube.com/watch?v=${m.dataset.yt}`;
+  if (m.dataset.vimeo) return `https://vimeo.com/${m.dataset.vimeo}/${m.dataset.h || ""}`;
+}
+function addFs(m){
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "fs";
+  b.setAttribute("aria-label", "Toggle fullscreen"); b.title = "Fullscreen";
+  b.innerHTML = '<svg class="enter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>'
+              + '<svg class="exit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg>';
+  b.onclick = e => {
+    e.stopPropagation();
+    const cur = document.fullscreenElement || document.webkitFullscreenElement;
+    if (cur) { (document.exitFullscreen || document.webkitExitFullscreen).call(document); return; }
+    const req = m.requestFullscreen || m.webkitRequestFullscreen;
+    if (req) req.call(m);
+    else window.open(videoUrl(m), "_blank", "noopener"); // iPhone: no element fullscreen
+  };
+  m.appendChild(b);
+}
+document.querySelectorAll(".media[data-yt], .media[data-gdrive], .media[data-vimeo]").forEach(addFs);
+document.addEventListener("fullscreenchange", () => document.querySelectorAll(".fs").forEach(b => b.title = document.fullscreenElement ? "Exit fullscreen" : "Fullscreen"));
 
 // Filters
 document.querySelectorAll(".filters button").forEach(b => b.onclick = () => {
